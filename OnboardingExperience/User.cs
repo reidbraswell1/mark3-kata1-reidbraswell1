@@ -10,4 +10,10 @@ public class User {
     private bool IsAccountOwner { get; set; };
 
     public byte PinNumber { get; set; }
-}
+
+    // Default Constructor
+    public User() 
+    {
+
+    }//User//
+}//User//
