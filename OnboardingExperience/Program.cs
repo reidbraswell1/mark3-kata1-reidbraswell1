@@ -15,7 +15,7 @@ namespace OnboardingExperience
             user.City=AskQuestionString("What is your City?");
             user.State=AskQuestionState("What is your State?");
             user.ZipCode=AskQuestionZipCode("What is your Zip Code?");
-            user.PinNumber=AskQuestionPINCode("What is your PIN number");
+            user.PINNumber=AskQuestionPINCode("What is your PIN number");
             var owner = (user.IsAccountOwner == true) ? "ARE the account" : "ARE NOT the account";
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("\nThanks for responding your name is:");
@@ -25,7 +25,7 @@ namespace OnboardingExperience
             sb.AppendLine(user.Address);
             sb.AppendLine(user.City + "," + user.State + "," + user.ZipCode);
             sb.AppendLine("Your PIN Code is:");
-            sb.AppendLine(user.PinNumber.ToString());
+            sb.AppendLine(user.PINNumber.ToString());
             EchoResponse(sb.ToString());
         }
         static int AskQuestionPINCode(string question)
@@ -35,8 +35,11 @@ namespace OnboardingExperience
             {
                 var response = GetUserInput();
                 var number = 0;
-                if(int.TryParse(response, out number))
-                    return number; 
+                if(response.Length == 4)
+                {
+                    if(int.TryParse(response, out number))
+                        return number;
+                }//if//
                 DisplayErrorText("PIN Number must be 4 numeric digits please try again.");
             }//while//
         }//AskQuestionPINCode//
@@ -69,9 +72,11 @@ namespace OnboardingExperience
             {
                 var response = GetUserInput();
                 var zip = 0;
-                if(int.TryParse(response, out zip))
-                    return zip;
-                DisplayErrorText("Your Zip Code is not numeric - Please re-enter a numeric zip code");
+                if(response.Length == 5) {
+                    if(int.TryParse(response, out zip))
+                        return zip;
+                }
+                DisplayErrorText("Your Zip Code must be 5 numeric digits - Please re-enter.");
             }
         }//AskQuestionZipCode//
         static bool AskQuestionBool(string question)
