@@ -1,3 +1,6 @@
+/*
+*  States ENUM
+*/
 public enum States : byte
 {
     AL=1,
