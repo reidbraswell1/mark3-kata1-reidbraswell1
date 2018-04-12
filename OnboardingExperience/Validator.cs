@@ -65,7 +65,7 @@ static class Validator
                 DisplayErrorText("Sorry I was unable to understand your response. Please use only Y(y) for yes or N(n) for no.");
             }//while//
         }//AskQuestionBool//
-        public static void AskQuestion(string question)
+        private static void AskQuestion(string question)
         {
             DisplayUserOutput(question);
         }//AskQuestion//
@@ -75,15 +75,15 @@ static class Validator
             DisplayUserOutput("Press Enter to Exit");
             GetUserInput();
         }//EchoResponse//
-        public static void DisplayErrorText(string errorText)
+        private static void DisplayErrorText(string errorText)
         {
             DisplayUserOutput(errorText);
         }//DisplayErrorText//
-        public static string GetUserInput()
+        private static string GetUserInput()
         {
             return Console.ReadLine();
         }//getUserInput//
-        public static void DisplayUserOutput(string text)
+        private static void DisplayUserOutput(string text)
         {
             Console.WriteLine(text);
         }//DisplayUserOutput//        
