@@ -1,11 +1,11 @@
-namespace OnboardingExperience 
+namespace OnboardingExperience
 {
     /*
     *  States ENUM
     */
     public enum States : byte
     {
-        AL=1,
+        AL = 1,
         AK,
         AZ,
         AR,

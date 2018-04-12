@@ -19,13 +19,13 @@ namespace OnboardingExperience
         public static int AskQuestionPINCode(string question)
         {
             AskQuestion(question);
-            while(true)
+            while (true)
             {
                 var response = GetUserInput();
                 var number = 0;
-                if(response.Length == PIN_NUMBER_LENGTH)
+                if (response.Length == PIN_NUMBER_LENGTH)
                 {
-                    if(int.TryParse(response, out number))
+                    if (int.TryParse(response, out number))
                         return number;
                 }//if//
                 DisplayErrorText($"PIN Number must be {PIN_NUMBER_LENGTH} numeric digits please try again.");
@@ -35,13 +35,13 @@ namespace OnboardingExperience
         /*
          * Ask for and validate a general string field..
          */
-        public static string AskQuestionString(string question) 
+        public static string AskQuestionString(string question)
         {
             AskQuestion(question);
-            while(true)
+            while (true)
             {
                 var response = GetUserInput();
-                if(response.Length >= MIN_RESPONSE_LENGTH)
+                if (response.Length >= MIN_RESPONSE_LENGTH)
                     return response;
                 DisplayErrorText($"Sorry I could not understand you. I don't see any text. Please enter at least {MIN_RESPONSE_LENGTH} characters");
             }//while//
@@ -50,13 +50,13 @@ namespace OnboardingExperience
         /*
          * Ask for and validate the state code.
          */
-        public static string AskQuestionState(string question) 
+        public static string AskQuestionState(string question)
         {
             AskQuestion(question);
-            while(true)
+            while (true)
             {
                 var response = Console.ReadLine();
-                if(Enum.IsDefined(typeof(States), response.ToUpper()))
+                if (Enum.IsDefined(typeof(States), response.ToUpper()))
                     return response.ToUpper();
                 DisplayErrorText("Sorry I did not get your State Code please use the standard state code abbreviations");
             }
@@ -68,12 +68,13 @@ namespace OnboardingExperience
         public static int AskQuestionZipCode(string question)
         {
             AskQuestion(question);
-            while(true)
+            while (true)
             {
                 var response = GetUserInput();
                 var zip = 0;
-                if(response.Length == ZIP_CODE_LENGTH) {
-                    if(int.TryParse(response, out zip))
+                if (response.Length == ZIP_CODE_LENGTH)
+                {
+                    if (int.TryParse(response, out zip))
                         return zip;
                 }
                 DisplayErrorText($"Your Zip Code must be {ZIP_CODE_LENGTH} numeric digits - Please re-enter.");
@@ -86,12 +87,12 @@ namespace OnboardingExperience
         public static bool AskQuestionBool(string question)
         {
             AskQuestion(question);
-            while(true)
+            while (true)
             {
                 var response = GetUserInput();
-                if(response.Equals("Y") || response.Equals("y"))
+                if (response.Equals("Y") || response.Equals("y"))
                     return true;
-                if(response.Equals("N") || response.Equals("n"))
+                if (response.Equals("N") || response.Equals("n"))
                     return false;
                 DisplayErrorText("Sorry I was unable to understand your response. Please use only Y(y) for yes or N(n) for no.");
             }//while//
@@ -120,7 +121,7 @@ namespace OnboardingExperience
         {
             DisplayUserOutput(question);
         }//AskQuestion//
-        
+
         /*
          * Display the response and pause screen so user can view response.
          */
