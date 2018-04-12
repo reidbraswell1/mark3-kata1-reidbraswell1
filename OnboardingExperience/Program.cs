@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using static ValidatorHelper;
 
 namespace OnboardingExperience
 {
@@ -8,23 +9,16 @@ namespace OnboardingExperience
         static void Main(string[] args)
         {
             User user = new User();
-            user.LastName=Validator.AskQuestionString("What is your Last Name?");
-            user.FirstName=Validator.AskQuestionString("What is your First Name?");
-            user.IsAccountOwner=Validator.AskQuestionBool("Are You the Account Owner Y or N?");
-            user.Address=Validator.AskQuestionString("What is you Address?");
-            user.City=Validator.AskQuestionString("What is your City?");
-            user.State=Validator.AskQuestionState("What is your State?");
-            user.ZipCode=Validator.AskQuestionZipCode("What is your Zip Code?");
-            user.PINNumber=Validator.AskQuestionPINCode("What is your PIN number");
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("\nYour Responses:");
-            sb.AppendLine("Name:\t\t" + user.FirstName + " " + user.LastName);
-            sb.AppendLine("Address:\t" + user.Address);
-            sb.AppendLine("City/ST/Zip:\t" + user.City + "," + user.State + " " + user.ZipCode);
-            sb.AppendLine("PIN Code:\t" + user.PINNumber.ToString());
-            var yesNo = (user.IsAccountOwner) ? "YES" : "NO";
-            sb.AppendLine("Account Owner:\t" + yesNo);
-            Validator.EchoResponse(sb.ToString());
+            user.LastName=AskQuestionString("What is your Last Name?");
+            user.FirstName=AskQuestionString("What is your First Name?");
+            user.IsAccountOwner=AskQuestionBool("Are You the Account Owner Y or N?");
+            user.Address=AskQuestionString("What is you Address?");
+            user.City=AskQuestionString("What is your City?");
+            user.State=AskQuestionState("What is your State?");
+            user.ZipCode=AskQuestionZipCode("What is your Zip Code?");
+            user.PINNumber=AskQuestionPINCode("What is your PIN number");
+
+            EchoResponse((BuildOutputResponse(user)).ToString());
         }//Main//
     }//Program//
 }//Program//
