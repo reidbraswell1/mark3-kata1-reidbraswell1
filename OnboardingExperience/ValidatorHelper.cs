@@ -28,7 +28,7 @@ namespace OnboardingExperience
                     if(int.TryParse(response, out number))
                         return number;
                 }//if//
-                DisplayErrorText("PIN Number must be 4 numeric digits please try again.");
+                DisplayErrorText($"PIN Number must be {PIN_NUMBER_LENGTH} numeric digits please try again.");
             }//while//
         }//AskQuestionPINCode//
 
