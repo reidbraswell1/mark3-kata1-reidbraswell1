@@ -1,11 +1,14 @@
 using System;
 using System.Text;
-/*
- *
- *  Static Class helper to assist with console input/output and validation.
- */
-static class ValidatorHelper
+
+namespace OnboardingExperience
 {
+    /*
+     * Static Class Validator Helper
+     *
+     */
+    static class ValidatorHelper
+    {
         private const int PIN_NUMBER_LENGTH = 4;
         private const int ZIP_CODE_LENGTH = 5;
         private const int MIN_RESPONSE_LENGTH = 2;
@@ -144,4 +147,5 @@ static class ValidatorHelper
         {
             Console.WriteLine(text);
         }//DisplayUserOutput//        
-}//Validator//
+    }//ValidatorHelper//
+}//OnboardingExperience//
