@@ -22,7 +22,8 @@ namespace OnboardingExperience
             sb.AppendLine("Address:\t" + user.Address);
             sb.AppendLine("City/ST/Zip:\t" + user.City + "," + user.State + " " + user.ZipCode);
             sb.AppendLine("PIN Code:\t" + user.PINNumber.ToString());
-            sb.AppendLine("Account Owner:\t" + user.IsAccountOwner);
+            var yesNo = (user.IsAccountOwner) ? "YES" : "NO";
+            sb.AppendLine("Account Owner:\t" + yesNo);
             Validator.EchoResponse(sb.ToString());
         }//Main//
     }//Program//
