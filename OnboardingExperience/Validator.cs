@@ -1,9 +1,10 @@
 using System;
+using System.Text;
 /*
  *
  *  Static Class helper to assist with console input/output and validation.
  */
-static class Validator
+static class ValidatorHelper
 {
         private const int PIN_NUMBER_LENGTH = 4;
         private const int ZIP_CODE_LENGTH = 5;
@@ -92,6 +93,19 @@ static class Validator
                 DisplayErrorText("Sorry I was unable to understand your response. Please use only Y(y) for yes or N(n) for no.");
             }//while//
         }//AskQuestionBool//
+
+        public static StringBuilder BuildOutputResponse(User user)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("\nYour Responses:");
+            sb.AppendLine("Name:\t\t" + user.FirstName + " " + user.LastName);
+            sb.AppendLine("Address:\t" + user.Address);
+            sb.AppendLine("City/ST/Zip:\t" + user.City + "," + user.State + " " + user.ZipCode);
+            sb.AppendLine("PIN Code:\t" + user.PINNumber.ToString());
+            var yesNo = (user.IsAccountOwner) ? "YES" : "NO";
+            sb.AppendLine("Account Owner:\t" + yesNo);
+            return sb;
+        }
 
         /*
          * Helper method for asking a question.
