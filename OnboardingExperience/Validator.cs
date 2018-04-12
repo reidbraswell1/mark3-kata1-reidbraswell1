@@ -1,6 +1,10 @@
 using System;
 static class Validator
 {
+        private const int PIN_NUMBER_LENGTH = 4;
+        private const int ZIP_CODE_LENGTH = 5;
+        private const int MIN_RESPONSE_LENGTH = 2;
+
         public static int AskQuestionPINCode(string question)
         {
             AskQuestion(question);
@@ -8,7 +12,7 @@ static class Validator
             {
                 var response = GetUserInput();
                 var number = 0;
-                if(response.Length == 4)
+                if(response.Length == PIN_NUMBER_LENGTH)
                 {
                     if(int.TryParse(response, out number))
                         return number;
@@ -22,9 +26,9 @@ static class Validator
             while(true)
             {
                 var response = GetUserInput();
-                if(response.Length > 1)
+                if(response.Length >= MIN_RESPONSE_LENGTH)
                     return response;
-                DisplayErrorText("Sorry I could not understand you. I don't see any text. Please enter at least 2 characters");
+                DisplayErrorText($"Sorry I could not understand you. I don't see any text. Please enter at least {MIN_RESPONSE_LENGTH} characters");
             }//while//
         }//AskQuestionString//
         public static string AskQuestionState(string question) 
@@ -45,11 +49,11 @@ static class Validator
             {
                 var response = GetUserInput();
                 var zip = 0;
-                if(response.Length == 5) {
+                if(response.Length == ZIP_CODE_LENGTH) {
                     if(int.TryParse(response, out zip))
                         return zip;
                 }
-                DisplayErrorText("Your Zip Code must be 5 numeric digits - Please re-enter.");
+                DisplayErrorText($"Your Zip Code must be {ZIP_CODE_LENGTH} numeric digits - Please re-enter.");
             }
         }//AskQuestionZipCode//
         public static bool AskQuestionBool(string question)
