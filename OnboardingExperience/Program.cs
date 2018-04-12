@@ -16,16 +16,13 @@ namespace OnboardingExperience
             user.State=AskQuestionState("What is your State?");
             user.ZipCode=AskQuestionZipCode("What is your Zip Code?");
             user.PINNumber=AskQuestionPINCode("What is your PIN number");
-            var owner = (user.IsAccountOwner == true) ? "ARE the account" : "ARE NOT the account";
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("\nThanks for responding your name is:");
-            sb.AppendLine(user.FirstName + " " + user.LastName);
-            sb.AppendLine("You " + owner + " owner.");
-            sb.AppendLine("You live at:");
-            sb.AppendLine(user.Address);
-            sb.AppendLine(user.City + "," + user.State + "," + user.ZipCode);
-            sb.AppendLine("Your PIN Code is:");
-            sb.AppendLine(user.PINNumber.ToString());
+            sb.AppendLine("\nYour Responses:");
+            sb.AppendLine("Name:\t\t" + user.FirstName + " " + user.LastName);
+            sb.AppendLine("Address:\t" + user.Address);
+            sb.AppendLine("City/ST/Zip:\t" + user.City + "," + user.State + " " + user.ZipCode);
+            sb.AppendLine("PIN Code:\t" + user.PINNumber.ToString());
+            sb.AppendLine("Account Owner:\t" + user.IsAccountOwner);
             EchoResponse(sb.ToString());
         }
         static int AskQuestionPINCode(string question)
@@ -60,9 +57,9 @@ namespace OnboardingExperience
             while(true)
             {
                 var response = Console.ReadLine();
-                if(Enum.IsDefined(typeof(States), response))
-                    return response;
-                DisplayErrorText("Sorry I did not get your State Code please use an upper case 2 digit letter");
+                if(Enum.IsDefined(typeof(States), response.ToUpper()))
+                    return response.ToUpper();
+                DisplayErrorText("Sorry I did not get your State Code please use the standard state code abbreviations");
             }
         }//AskQuestionState//
         static int AskQuestionZipCode(string question)
@@ -104,7 +101,7 @@ namespace OnboardingExperience
         }//EchoResponse//
         static void DisplayErrorText(string errorText)
         {
-            Console.WriteLine(errorText);
+            DisplayUserOutput(errorText);
         }//DisplayErrorText//
         static string GetUserInput()
         {
