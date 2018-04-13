@@ -31,6 +31,6 @@ namespace OnboardingExperience
             var yesNo = (IsAccountOwner) ? "YES" : "NO";
             sb.AppendLine("Account Owner:\t" + yesNo);
             return sb.ToString();
-        }
+        }//ToString//
     }//User//
 }//OnboardingExperience//
