@@ -18,7 +18,7 @@ namespace OnboardingExperience
             user.ZipCode = AskQuestionZipCode("What is your Zip Code?");
             user.PINNumber = AskQuestionPINCode("What is your PIN number");
 
-            EchoResponse((BuildOutputResponse(user)).ToString());
+            EchoResponse(user.ToString());
         }//Main//
     }//Program//
 }//OnboardingExperience//
