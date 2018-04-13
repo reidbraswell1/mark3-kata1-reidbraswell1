@@ -99,22 +99,6 @@ namespace OnboardingExperience
         }//AskQuestionBool//
 
         /*
-         * Build the output response.
-         */
-        public static StringBuilder BuildOutputResponse(User user)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("\nYour Responses:");
-            sb.AppendLine("Name:\t\t" + user.FirstName + " " + user.LastName);
-            sb.AppendLine("Address:\t" + user.Address);
-            sb.AppendLine("City/ST/Zip:\t" + user.City + "," + user.State + " " + user.ZipCode);
-            sb.AppendLine("PIN Code:\t" + user.PINNumber.ToString());
-            var yesNo = (user.IsAccountOwner) ? "YES" : "NO";
-            sb.AppendLine("Account Owner:\t" + yesNo);
-            return sb;
-        }
-
-        /*
          * Helper method for asking a question.
          */
         private static void AskQuestion(string question)
