@@ -1,3 +1,4 @@
+using System.Text;
 namespace OnboardingExperience
 {
     /*
@@ -14,5 +15,22 @@ namespace OnboardingExperience
         public int ZipCode { get; set; }
         public bool IsAccountOwner { get; set; }
         public int PINNumber { get; set; }
+
+
+        /*
+         * Build the output response.
+         */
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("\nYour Responses:");
+            sb.AppendLine("Name:\t\t" + FirstName + " " + LastName);
+            sb.AppendLine("Address:\t" + Address);
+            sb.AppendLine("City/ST/Zip:\t" + City + "," + State + " " + ZipCode);
+            sb.AppendLine("PIN Code:\t" + PINNumber.ToString());
+            var yesNo = (IsAccountOwner) ? "YES" : "NO";
+            sb.AppendLine("Account Owner:\t" + yesNo);
+            return sb.ToString();
+        }
     }//User//
 }//OnboardingExperience//
