@@ -14,11 +14,5 @@ namespace OnboardingExperience
         public int ZipCode { get; set; }
         public bool IsAccountOwner { get; set; }
         public int PINNumber { get; set; }
-
-        // Default Constructor
-        public User()
-        {
-
-        }//UserConstructor//
     }//User//
 }//OnboardingExperience//
