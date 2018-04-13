@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using static OnboardingExperience.ValidatorHelper;
 
 namespace OnboardingExperience
 {
@@ -6,9 +8,17 @@ namespace OnboardingExperience
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            User user = new User();
+            user.LastName = AskQuestionString("What is your Last Name?");
+            user.FirstName = AskQuestionString("What is your First Name?");
+            user.IsAccountOwner = AskQuestionBool("Are You the Account Owner Y or N?");
+            user.Address = AskQuestionString("What is you Address?");
+            user.City = AskQuestionString("What is your City?");
+            user.State = AskQuestionState("What is your State?");
+            user.ZipCode = AskQuestionZipCode("What is your Zip Code?");
+            user.PINNumber = AskQuestionPINCode("What is your PIN number");
 
-            Console.ReadLine();
-        }
-    }
-}
+            EchoResponse(user.ToString());
+        }//Main//
+    }//Program//
+}//OnboardingExperience//
